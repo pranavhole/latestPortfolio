@@ -9,7 +9,7 @@ import AboutSection from "../sub/AboutSection";
 const About = () => {
   return (
     <div
-      className="w-[100vw] h-[100vh]"
+      className="w-[100vw] h-full"
     >
       <AboutSection/>
     </div>

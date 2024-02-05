@@ -3,6 +3,7 @@ import { motion, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
 import "./scroll.css"
 import ProjectCard from "../sub/ProjectCard";
+import GlowingText from "../sub/Glow";
 const Project = () => {
   return (
     <div className="" id="projects">
@@ -23,10 +24,8 @@ const HorizontalScrollCarousel = () => {
     <section ref={targetRef} className="relative h-[600vh] ">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-4 mt-10">
-          <section className=" red   h-[80vh] w-[100vw] overflow-hidden ">
-            {/* <Project 
-            src=""
-            /> */}
+          <section className="  h-[80vh] w-[100vw] overflow-hidden ">
+            <GlowingText text="Projects"/>
           </section>
           <section className=" orange   h-[80vh] w-[100vw] overflow-hidden" >
             TWO

@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+:root {
+     --blur-1: 50px;
+     --blur-2: 50px;
+     --blur-3: 50px;
+     --blur-4: 50px;
+     --blur-5: 50px;
+  
+ }
+ 
+ 
+ html {
+   
+ }
+ 
+ .c-container {
+   
+ }
+ 
+ .h1 {
+   color:rgb(255,255,255);
+   font-size:9rem;
+   letter-spacing:12px;
+   font-family:'Jua', sans-serif;
+ }
+ 
+ .span {
+   will-change:scale;
+   transition:.9s ease;
+   position:relative;
+   display:inline-block;
+   transform:scale(1);
+   
+   &:after {
+     content:'';
+     position:absolute;
+     transform:scaleX(-1) rotateZ(130deg) skewY(30deg);
+     bottom:-100px;
+     transition:.9s ease;
+     
+     left:0;
+     color:inherit;
+     
+   }
+ }
+ 
+ .span:nth-child(1){
+   text-shadow:3px 0px 10px #E3306D;
+   color:#E3306D;
+   &:after {
+     content:'P';
+     filter:blur(var(--blur-1));
+   }
+   
+ }
+ .span:nth-child(2){
+   text-shadow:3px 0px 10px #F157EF;
+   color:#F157EF;
+   &:after {
+   content:'r';
+     filter:blur(var(--blur-2));
+   }
+ }
+ .span:nth-child(3){
+   text-shadow:3px 0px 10px #FEB3FF;
+   color:#FEB3FF;
+   &:after {
+   content:'o';
+     filter:blur(var(--blur-3));
+   }
+ }
+ .span:nth-child(4){
+   text-shadow:3px 0px 10px #ED49FE;
+   color:#ED49FE;
+   &:after {
+   content:'j';
+     filter:blur(var(--blur-4));
+   }
+ }
+ .span:nth-child(5){ 
+   text-shadow:3px 0px 10px #A554F9;
+   color:#A554F9;
+   &:after {
+   content:'e';
+     filter:blur(var(--blur-5));
+   }
+ }
+ .span:nth-child(6){ 
+  text-shadow:3px 0px 10px #f23def;
+  color:#f23def;
+  &:after {
+  content:'c';
+    filter:blur(var(--blur-5));
+  }
+}
+.span:nth-child(7){ 
+  text-shadow:3px 0px 10px #961fcd;
+  color:#961fcd;
+  &:after {
+  content:'t';
+    filter:blur(var(--blur-5));
+  }
+}
+.span:nth-child(8){ 
+  text-shadow:3px 0px 10px #da0b84;
+  color:#da0b84;
+  &:after {
+  content:'s';
+    filter:blur(var(--blur-5));
+  }
+}
