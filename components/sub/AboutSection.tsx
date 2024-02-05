@@ -13,7 +13,7 @@ const About = () => {
         <motion.div
             initial="hidden"
             animate="visible"
-            className="flex flex-col items-center justify-center px-20 w-[100vw] z-[20] justify-items-start max-sm:mt-20 max-sm:px-5"
+            className="flex flex-col items-center justify-center px-20 w-[100vw] z-[20] justify-items-start max-sm:mt-20 max-sm:px-2"
         >
 
 
@@ -30,7 +30,7 @@ const About = () => {
 
             <motion.div
                 variants={slideInFromRight(0.8)}
-                className="w-[100%] h-full flex flex-col justify-items-start pl-5 items-center mt-7"
+                className="w-[100%] h-full flex flex-col justify-items-start pl-5 items-center mt-7 max-sm:pl-1"
             >
                 <motion.p className="text-white text-xl !max-w-[90%] text-justify mb-3">
                     Greetings! I am a driven Electrical Engineering student, deeply immersed in the world of programming. My expertise spans C++, web technologies, and blockchain development, showcasing a diverse skill set. Proficient in frameworks such as ReactJS and NodeJS, I bring a creative touch to projects, often utilizing tools like Canva to enhance the user experience.

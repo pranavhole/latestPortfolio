@@ -23,7 +23,16 @@
    letter-spacing:12px;
    font-family:'Jua', sans-serif;
  }
- 
+ @media screen and (max-width:600px) {
+  .h1{
+    font-size: 4rem;
+  }
+}
+  @media screen and (max-width:400px) {
+    .h1{
+      font-size: 3rem;
+    }
+ }
  .span {
    will-change:scale;
    transition:.9s ease;
