@@ -88,7 +88,7 @@ export const Skill_data = [
     },
     {
       name: "Linkdin",
-      src: "/linkdin.svg",
+      src: "/linkedin.svg",
       link:"https://www.linkedin.com/in/pranav-hole/"
     },
     {

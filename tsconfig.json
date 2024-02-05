@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/sub/SectionWrapper.jsx", "components/main/contact.jsx", "components/utils/motion.js", "components/main/Projects.jsx", "components/main/Projects.jsx", "components/main/Projects.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/sub/SectionWrapper.jsx", "components/main/contact.tsx", "components/utils/motion.js", "components/main/Projects.jsx", "components/main/Projects.jsx", "components/main/Projects.jsx"],
   "exclude": ["node_modules"]
 }
