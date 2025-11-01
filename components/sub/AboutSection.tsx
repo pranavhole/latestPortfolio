@@ -19,10 +19,10 @@ const About = () => {
 
             <motion.div
                 variants={slideInFromLeft(0.5)}
-                className="text-6xl font-bold justify-items-start w-[100%] "
+                className="text-6xl font-bold contents justify-items-center w-[100%] max-sm:text-2xl "
             >
                 <span>
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500 justify-items-start">
+                    <span className="text-transparent flex bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500 justify-items-center">
                         About{" "}
                     </span>
                 </span>
@@ -32,18 +32,22 @@ const About = () => {
                 variants={slideInFromRight(0.8)}
                 className="w-[100%] h-full flex flex-col justify-items-start pl-5 items-center mt-7 max-sm:pl-1"
             >
-                <motion.p className="text-white text-xl !max-w-[90%] text-justify mb-3">
-                    Greetings! I am a driven Electrical Engineering student, deeply immersed in the world of programming. My expertise spans C++, web technologies, and blockchain development, showcasing a diverse skill set. Proficient in frameworks such as ReactJS and NodeJS, I bring a creative touch to projects, often utilizing tools like Canva to enhance the user experience.
+                <motion.p className="text-white text-xl !max-w-[90%] text-justify mb-3 max-sm:text-sm max-sm:text-center">
+                Hey, I’m Pranav Hole — a Full Stack & Blockchain Developer who loves turning complex ideas into scalable, production-ready systems.
+                I build experiences that merge performance, reliability, and creativity — from real-time apps and automation platforms to decentralized systems powered by smart contracts.
                 </motion.p>
-                <motion.p className="text-white text-xl !max-w-[90%] text-justify mb-3">
-                    Beyond the academic realm, my proactive involvement in coordinating tech events is a testament to my organizational skills. As a Co-Coordinator of Prajwalan23 and a member of the GCOEA Core-Team, I&apos;ve orchestrated successful events aimed at promoting education and student development.
+                <motion.p className="text-white text-xl !max-w-[90%] text-justify mb-3 max-sm:text-sm max-sm:text-center">
+                I believe great engineering is about more than just code — it’s about crafting solutions that scale elegantly and feel effortless to use. My approach blends deep backend logic with clean, modern UI design, bringing both structure and emotion to software.
+                  </motion.p>
+                <motion.p className="text-white text-xl !max-w-[90%] text-justify mb-3 max-sm:text-sm max-sm:text-center">
+                Currently, I work as a System Engineer at Tata Consultancy Services, engineering high-performance backend systems for financial platforms, and expanding my expertise into cloud infrastructure and web3 technologies.
                 </motion.p>
-                <motion.p className="text-white text-xl !max-w-[90%] text-justify mb-3">
-                    My competitive programming achievements speak to my commitment to continuous improvement. Being recognized as a 2-Star CodeChef programmer and holding a 5-Star rating in CPP at HackerRank underscores my dedication to honing my programming prowess.
-                </motion.p>
-                <motion.p className="text-white text-xl !max-w-[90%] text-justify mb-3">
-                    In the ever-evolving landscape of technology, I am passionate about making a meaningful impact. With a fusion of technical expertise, creative flair, and a strong academic foundation, I am ready to contribute innovative solutions to the challenges of the digital world. Let&apos;s embark on a journey of innovation and collaboration!
-                </motion.p>
+                <motion.p className="text-white text-xl !max-w-[90%] text-justify mb-3 max-sm:text-sm max-sm:text-center">
+                Outside of work, I’m obsessed with learning emerging tech — AI, decentralized networks, and developer tooling — anything that pushes the limits of what’s possible on the web.
+                 </motion.p>
+                 <motion.p className="text-white text-xl !max-w-[90%] text-justify mb-3 max-sm:text-sm max-sm:text-center">
+                 When I’m not coding, you’ll find me exploring product design ideas, automating my workflow, or sharing knowledge in dev communities.
+                 </motion.p>
             </motion.div>
         </motion.div>
     );
