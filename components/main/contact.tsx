@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
         className={` justify-center xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
       >
         <motion.div
-          variants={slideIn("left", "tween", 0.2, 1)}
+          variants={slideIn("left", "tween", 0.2, 1) as any}
           className=' flex flex-col flex-[0.75] p-8 rounded-2xl bg-[#100D25] '
         >
           <p className={styles.sectionSubText}>Get in touch</p>
