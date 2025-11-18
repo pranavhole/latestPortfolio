@@ -4,44 +4,46 @@ import { useRef } from "react";
 import "./scroll.css";
 import ProjectCard from "../sub/ProjectCard";
 
-
 const projects = [
   {
     id: 1,
-    title: "Crypto Dashboard",
-    description: "A real-time crypto tracker built with Next.js, Tailwind, and Chart.js.",
-    image: "/abcd.png",
-    tech: ["Next.js", "Tailwind", "Chart.js"],
-    demo: "https://yourdemo.com",
-    github: "https://github.com/yourrepo"
+    title: "Zapper Clone",
+    description:
+      "A Zapper clone built with Next.js, Tailwind CSS, Kafka, and React Flow.",
+    image: "/Zapier.png",
+    tech: ["Next.js", "Tailwind", "Kafka", "React Flow"],
+    demo: "https://zapp.pranavhole.space",
+    github: "https://github.com/pranavhole/zapier",
   },
   {
     id: 2,
-    title: "AI Portfolio Builder",
-    description: "Generate your portfolio using AI-powered templates.",
-    image: "/images/ai-portfolio.png",
-    tech: ["React", "OpenAI API", "Framer Motion"],
-    demo: "#",
-    github: "#"
+    title: "Muzzy an Music Streaming Platform",
+    description:
+      " A music streaming platform with constume room creation with live music playback in sync with friends.",
+    image: "/muzzy.png",
+    tech: [
+      "Next.js",
+      "Framer Motion",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "YTDll",
+      "Tailwind CSS",
+      "HLS.js",
+    ],
+    demo: "https://muzzy.pranavhole.space",
+    github: "https://github.com/pranavhole/muzzfin",
   },
   {
     id: 3,
-    title: "Blockchain Voting App",
-    description: "A decentralized voting system built on Ethereum.",
-    image: "/images/vote.png",
-    tech: ["Solidity", "React", "Web3.js"],
-    demo: "#",
-    github: "#"
+    title: "Lets Trade India",
+    description:
+      "A Treading education platform with payment gateway integration.",
+    image: "/letstrade.png",
+    tech: ["React", "MongoDB", "Express", "Node.js", "Tailwind CSS"],
+    demo: "https://letstradeindia.in",
+    github: "https://github.com/pranavhole/LetsTread",
   },
-  {
-    id: 4,
-    title: "3D Portfolio Experience",
-    description: "Interactive 3D developer portfolio with Three.js.",
-    image: "/images/3d.png",
-    tech: ["Three.js", "Next.js", "GSAP"],
-    demo: "#",
-    github: "#"
-  }
 ];
 
 const Project = () => {
@@ -65,7 +67,7 @@ const HorizontalScrollCarousel = () => {
           className="text-5xl md:text-6xl font-bold  bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           Projects
         </motion.h2>
@@ -80,7 +82,6 @@ const HorizontalScrollCarousel = () => {
     </section>
   );
 };
-
 const ProjectSlide = ({ project }: any) => {
   return (
     <section className="relative h-[80vh] w-[100vw] flex items-center justify-center overflow-hidden rounded-3xl shadow-2xl">
@@ -90,42 +91,60 @@ const ProjectSlide = ({ project }: any) => {
         style={{
           backgroundImage: `url(${project.image})`,
         }}
-        initial={{ scale: 1.1, opacity: 0.8 }}
-        whileInView={{ scale: 1, opacity: 1 }}
+        initial={{ scale: 1.15, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 0.6 }}
         transition={{ duration: 1 }}
       />
 
-      {/* Overlay layer */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
 
-      {/* Content layer */}
       <motion.div
-        className="relative z-10 max-w-xl text-center px-8"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        className="
+          relative z-10 max-w-xl w-[85%] text-center px-10 py-8 
+          rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.7)]
+          bg-white/10 backdrop-blur-xl border border-white/20
+        "
+        // initial={{ opacity: 0, scale: 0.85, y: 40 }}
+        // whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        // whileHover={{
+        //   scale: 1.02,
+        //   boxShadow: "0 0 60px rgba(140, 110, 255, 0.4)",
+        // }}
+        // transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <h3 className="text-4xl font-bold text-white mb-3">{project.title}</h3>
-        <p className="text-gray-300 mb-5">{project.description}</p>
-        <div className="flex justify-center gap-3 flex-wrap text-sm text-indigo-300 mb-6">
+        <h3 className="text-4xl font-extrabold text-white drop-shadow-lg mb-4">
+          {project.title}
+        </h3>
+
+        <p className="text-gray-200 mb-6 leading-relaxed">
+          {project.description}
+        </p>
+
+        {/* Tech badges */}
+        <div className="flex justify-center gap-3 flex-wrap text-sm mb-7">
           {project.tech.map((tech: string, i: number) => (
-            <span key={i} className="px-3 py-1 bg-indigo-600/20 rounded-full border border-indigo-400/30">
+            <span
+              key={i}
+              className="px-4 py-1.5 bg-indigo-500/20 text-indigo-200 border border-indigo-400/40 rounded-full shadow-inner"
+            >
               {tech}
             </span>
           ))}
         </div>
-        <div className="flex justify-center gap-4">
+
+        {/* Buttons */}
+        <div className="flex justify-center gap-5">
           <a
             href={project.demo}
             target="_blank"
-            className="bg-indigo-600 hover:bg-indigo-700 px-5 py-2 rounded-xl text-white transition"
+            className="bg-indigo-600 hover:bg-indigo-700 px-6 py-2.5 rounded-xl text-white font-semibold transition shadow-lg hover:shadow-indigo-500/40"
           >
             Live Demo
           </a>
           <a
             href={project.github}
             target="_blank"
-            className="border text-white  bg-transparent border-white hover:bg-white hover:text-black px-5 py-2 rounded-xl transition"
+            className="border border-white/50 text-white hover:bg-white hover:text-black px-6 py-2.5 rounded-xl font-semibold transition shadow-lg hover:shadow-white/30"
           >
             GitHub
           </a>

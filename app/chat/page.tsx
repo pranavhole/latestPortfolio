@@ -21,7 +21,7 @@ export default function Chat() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/chat", {
+      const response = await fetch("http://localhost:8000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -45,7 +45,7 @@ export default function Chat() {
         assistantMessage += decoder.decode(value, { stream: true });
 
         setMessages((prev) => {
-          const updated = [...prev]
+          const updated = [...prev];
           if (updated[updated.length - 1]?.role === "assistant") {
             updated[updated.length - 1].content = assistantMessage;
           } else {
