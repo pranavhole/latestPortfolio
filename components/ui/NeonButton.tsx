@@ -64,6 +64,7 @@ export default function NeonButton({
       download={download}
       target={download ? undefined : "_blank"}
       rel="noopener noreferrer"
+      data-magnetic="true"
       style={variant === "red" ? redStyle : ghostStyle}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}

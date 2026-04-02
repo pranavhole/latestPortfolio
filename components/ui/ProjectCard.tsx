@@ -18,6 +18,7 @@ export default function ProjectCard({
 }) {
   return (
     <motion.div
+      data-magnetic="true"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, delay: index * 0.12, ease: "easeOut" }}
