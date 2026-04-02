@@ -1,6 +1,4 @@
-import { Socials } from "@/constants";
-import Image from "next/image";
-// import { Link } from "react-router-dom";
+import { PERSONAL } from "@/constants";
 import React from "react";
 
 const Navbar = () => {
@@ -12,7 +10,7 @@ const Navbar = () => {
           className="h-auto w-auto flex flex-row items-center"
         >
           <span className="font-bold ml-[10px] md:block text-gray-300">
-            Pranav
+            {PERSONAL.name}
           </span>
         </a>
 
@@ -31,17 +29,8 @@ const Navbar = () => {
         </div>
 
         <div className="flex flex-row gap-5">
-          {Socials.map((social,index) => (
-            
-              <a href={social.link} key={index} target="_blank"><Image
-                src={social.src}
-                alt={social.name}
-                key={social.name}
-                width={24}
-                height={24}
-                className=" text-white"
-              /></a>
-          ))}
+          <a href={PERSONAL.github} target="_blank" rel="noreferrer" className="text-gray-300 text-sm">GitHub</a>
+          <a href={PERSONAL.linkedin} target="_blank" rel="noreferrer" className="text-gray-300 text-sm">LinkedIn</a>
         </div>
       </div>
     </div>

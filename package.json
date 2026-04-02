@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chenglou/pretext": "^0.0.4",
     "@emailjs/browser": "^4.1.0",
     "@heroicons/react": "^2.0.18",
     "@react-three/drei": "^10.7.4",
