@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { PERSONAL } from "@/constants";
 
 const links = [
   { label: "About", href: "#about" },
