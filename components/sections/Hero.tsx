@@ -8,6 +8,7 @@ import ChapterTag from "@/components/ui/ChapterTag";
 import NeonButton from "@/components/ui/NeonButton";
 import StatItem from "@/components/ui/StatItem";
 import { useMousePosition } from "@/hooks/useMousePosition";
+import AnimatedText from "@/components/ui/AnimatedText";
 
 function Particles({ mouseX, mouseY }: { mouseX: number; mouseY: number }) {
   const pointsRef = useRef<THREE.Points>(null);
@@ -159,14 +160,16 @@ export default function Hero() {
           }}
         >
           Pranav{" "}
-          <span
+          <AnimatedText
+            text="Hole"
             style={{
               color: "#ff1a1a",
               textShadow: "0 0 30px rgba(255,26,26,0.5)",
+              fontSize: "inherit",
+              fontWeight: "inherit",
+              letterSpacing: "inherit",
             }}
-          >
-            Hole
-          </span>
+          />
         </motion.h1>
 
         {/* Role morphing */}
