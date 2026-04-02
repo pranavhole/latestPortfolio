@@ -91,6 +91,17 @@ export default function Cursor() {
         }
       });
 
+      // Grid distortion: shift grid lines slightly toward cursor
+      const gridEl = document.querySelector<HTMLElement>(".grid-overlay");
+      if (gridEl) {
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        const offsetX = (m.x - cx) * 0.008;
+        const offsetY = (m.y - cy) * 0.008;
+        gridEl.style.setProperty("--grid-offset-x", `${offsetX}px`);
+        gridEl.style.setProperty("--grid-offset-y", `${offsetY}px`);
+      }
+
       raf = requestAnimationFrame(loop);
     };
 

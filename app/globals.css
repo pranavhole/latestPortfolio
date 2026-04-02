@@ -56,6 +56,8 @@ body {
     linear-gradient(rgba(255, 26, 26, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 26, 26, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
+  background-position: var(--grid-offset-x, 0px) var(--grid-offset-y, 0px);
+  transition: background-position 0.3s ease-out;
 }
 
 /* Corner brackets */
@@ -99,4 +101,10 @@ body {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+/* Reduced motion — disable complex animations */
+@media (prefers-reduced-motion: reduce) {
+  .scanline { animation: none !important; opacity: 0; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

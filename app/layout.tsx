@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Cursor from "@/components/ui/Cursor";
+import FilmGrain from "@/components/ui/FilmGrain";
 import Navbar from "@/components/layout/Navbar";
 import FloatingChat from "@/components/main/FloatingChat";
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="corner corner-tr" />
         <div className="corner corner-bl" />
         <div className="corner corner-br" />
+        <FilmGrain />
         <Navbar />
         {children}
         <FloatingChat />
