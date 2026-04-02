@@ -41,7 +41,7 @@ const projects = [
       "A Treading education platform with payment gateway integration.",
     image: "/letstrade.png",
     tech: ["React", "MongoDB", "Express", "Node.js", "Tailwind CSS"],
-    demo: "https://letstradeindia.in",
+    demo: "https://www.letstradeindia.co",
     github: "https://github.com/pranavhole/LetsTread",
   },
 ];
