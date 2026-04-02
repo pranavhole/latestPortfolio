@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { spring, springDelayed } from "@/utils/spring";
 import { PERSONAL } from "@/constants";
 import ChapterTag from "@/components/ui/ChapterTag";
 
@@ -22,7 +23,7 @@ export default function Contact() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={spring}
           viewport={{ once: true }}
           style={{
             fontSize: "clamp(2rem, 5vw, 3rem)",
@@ -61,7 +62,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.45, delay: i * 0.1 }}
+                transition={springDelayed(i * 0.1)}
                 viewport={{ once: true }}
                 style={{
                   display: "flex",

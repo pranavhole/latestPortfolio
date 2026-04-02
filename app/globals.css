@@ -108,3 +108,9 @@ body {
   .scanline { animation: none !important; opacity: 0; }
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* Performance: promote animated layers to GPU */
+.scanline,
+.grid-overlay {
+  will-change: transform;
+}

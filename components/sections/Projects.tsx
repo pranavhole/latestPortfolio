@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { spring } from "@/utils/spring";
 import { PROJECTS } from "@/constants";
 import ChapterTag from "@/components/ui/ChapterTag";
 import ProjectCard from "@/components/ui/ProjectCard";
@@ -13,7 +14,7 @@ export default function Projects() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={spring}
           viewport={{ once: true }}
           style={{
             fontSize: "clamp(2rem, 5vw, 3rem)",

@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { spring, springDelayed } from "@/utils/spring";
 import { EXPERIENCE } from "@/constants";
 import ChapterTag from "@/components/ui/ChapterTag";
 import TimelineItem from "@/components/ui/TimelineItem";
@@ -38,7 +39,7 @@ export default function About() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={spring}
           viewport={{ once: true }}
           style={{
             fontSize: "clamp(2rem, 5vw, 3rem)",
@@ -65,7 +66,7 @@ export default function About() {
                 key={i}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
+                transition={springDelayed(i * 0.15)}
                 viewport={{ once: true }}
                 style={{
                   color: "#444",

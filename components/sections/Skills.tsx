@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { spring, springDelayed } from "@/utils/spring";
 import { SKILL_GROUPS } from "@/constants";
 import ChapterTag from "@/components/ui/ChapterTag";
 import SkillChip from "@/components/ui/SkillChip";
@@ -13,7 +14,7 @@ export default function Skills() {
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={spring}
           viewport={{ once: true }}
           style={{
             fontSize: "clamp(2rem, 5vw, 3rem)",
@@ -31,7 +32,7 @@ export default function Skills() {
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, delay: gi * 0.05 }}
+                transition={springDelayed(gi * 0.05)}
                 viewport={{ once: true }}
                 style={{
                   display: "flex",
@@ -50,7 +51,12 @@ export default function Skills() {
 
               <motion.div
                 style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}
-                variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
+                variants={{
+                  visible: {
+                    transition: { staggerChildren: 0.04, delayChildren: 0.1 },
+                  },
+                  hidden: {},
+                }}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
