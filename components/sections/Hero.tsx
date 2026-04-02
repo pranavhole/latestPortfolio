@@ -7,12 +7,14 @@ import { PERSONAL, ROLES, STATS } from "@/constants";
 import ChapterTag from "@/components/ui/ChapterTag";
 import NeonButton from "@/components/ui/NeonButton";
 import StatItem from "@/components/ui/StatItem";
+import { useMousePosition } from "@/hooks/useMousePosition";
 
-function Particles() {
+function Particles({ mouseX, mouseY }: { mouseX: number; mouseY: number }) {
   const pointsRef = useRef<THREE.Points>(null);
   const count = 200;
 
-  const positions = useRef(
+  // Store both current and original positions
+  const originalPositions = useRef(
     Float32Array.from({ length: count * 3 }, (_, i) => {
       const axis = i % 3;
       if (axis === 0) return (Math.random() - 0.5) * 20;
@@ -21,10 +23,45 @@ function Particles() {
     })
   );
 
-  useFrame(({ clock }) => {
-    if (pointsRef.current) {
-      pointsRef.current.rotation.y = clock.getElapsedTime() * 0.02;
+  const currentPositions = useRef(new Float32Array(originalPositions.current));
+
+  useFrame(({ clock, viewport }) => {
+    if (!pointsRef.current) return;
+    pointsRef.current.rotation.y = clock.getElapsedTime() * 0.02;
+
+    // Convert screen mouse to normalized device coords → world units
+    const mx = (mouseX / window.innerWidth) * 2 - 1;
+    const my = -((mouseY / window.innerHeight) * 2 - 1);
+    const worldX = mx * (viewport.width / 2);
+    const worldY = my * (viewport.height / 2);
+
+    const pos = currentPositions.current;
+    const orig = originalPositions.current;
+    const REPEL_RADIUS = 2.5;
+    const REPEL_STRENGTH = 0.08;
+    const RETURN_SPEED = 0.05;
+
+    for (let i = 0; i < count; i++) {
+      const xi = i * 3;
+      const dx = pos[xi] - worldX;
+      const dy = pos[xi + 1] - worldY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < REPEL_RADIUS) {
+        const force = (1 - dist / REPEL_RADIUS) * REPEL_STRENGTH;
+        pos[xi] += (dx / dist) * force;
+        pos[xi + 1] += (dy / dist) * force;
+      }
+
+      // Spring back to original position
+      pos[xi] += (orig[xi] - pos[xi]) * RETURN_SPEED;
+      pos[xi + 1] += (orig[xi + 1] - pos[xi + 1]) * RETURN_SPEED;
     }
+
+    // Tell Three.js the buffer changed
+    const geo = pointsRef.current.geometry;
+    (geo.attributes.position as THREE.BufferAttribute).array = pos;
+    geo.attributes.position.needsUpdate = true;
   });
 
   return (
@@ -32,7 +69,7 @@ function Particles() {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          args={[positions.current, 3]}
+          args={[currentPositions.current, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
@@ -55,6 +92,7 @@ const fadeUp = (delay: number) => ({
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [roleVisible, setRoleVisible] = useState(true);
+  const mouse = useMousePosition();
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -85,7 +123,7 @@ export default function Hero() {
       {/* Three.js particle background */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-          <Particles />
+          <Particles mouseX={mouse.x} mouseY={mouse.y} />
         </Canvas>
       </div>
 
