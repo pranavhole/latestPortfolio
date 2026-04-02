@@ -1,7 +1,14 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { motion, useSpring } from "framer-motion";
 
 type Variant = "red" | "ghost";
+
+interface Ripple {
+  id: number;
+  x: number;
+  y: number;
+}
 
 export default function NeonButton({
   href,
@@ -15,6 +22,8 @@ export default function NeonButton({
   download?: boolean;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
+  const [ripples, setRipples] = useState<Ripple[]>([]);
+  const scaleSpring = useSpring(1, { stiffness: 400, damping: 20 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const el = ref.current;
@@ -22,11 +31,29 @@ export default function NeonButton({
     const rect = el.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+    el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
   };
 
   const handleMouseLeave = () => {
     if (ref.current) ref.current.style.transform = "translate(0,0)";
+    scaleSpring.set(1);
+  };
+
+  const handleMouseEnter = () => {
+    scaleSpring.set(1.04);
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const id = Date.now();
+    setRipples((r) => [...r, { id, x, y }]);
+    setTimeout(() => setRipples((r) => r.filter((rp) => rp.id !== id)), 600);
+    scaleSpring.set(0.94);
+    setTimeout(() => scaleSpring.set(1.04), 100);
   };
 
   const base: React.CSSProperties = {
@@ -38,8 +65,9 @@ export default function NeonButton({
     textTransform: "uppercase",
     borderRadius: 2,
     textDecoration: "none",
-    transition: "all 0.3s",
     cursor: "none",
+    position: "relative",
+    overflow: "hidden",
   };
 
   const redStyle: React.CSSProperties = {
@@ -58,29 +86,48 @@ export default function NeonButton({
   };
 
   return (
-    <a
+    <motion.a
       ref={ref}
       href={href}
       download={download}
       target={download ? undefined : "_blank"}
       rel="noopener noreferrer"
-      data-magnetic="true"
-      style={variant === "red" ? redStyle : ghostStyle}
+      style={{
+        ...(variant === "red" ? redStyle : ghostStyle),
+        scale: scaleSpring,
+      }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onMouseEnter={(e) => {
-        const el = e.currentTarget;
-        if (variant === "red") {
-          el.style.background = "rgba(255,26,26,0.2)";
-          el.style.color = "#fff";
-          el.style.boxShadow = "0 0 28px rgba(255,26,26,0.4)";
-        } else {
-          el.style.borderColor = "rgba(255,26,26,0.4)";
-          el.style.color = "#ff1a1a";
-        }
-      }}
+      onMouseEnter={handleMouseEnter}
+      onClick={handleClick}
+      data-magnetic="true"
     >
       {children}
-    </a>
+
+      {/* Ripple effects */}
+      {ripples.map((rp) => (
+        <span
+          key={rp.id}
+          style={{
+            position: "absolute",
+            left: rp.x,
+            top: rp.y,
+            width: 4,
+            height: 4,
+            borderRadius: "50%",
+            background: variant === "red" ? "rgba(255,255,255,0.5)" : "rgba(255,26,26,0.4)",
+            transform: "translate(-50%, -50%) scale(0)",
+            animation: "ripple-expand 0.6s ease-out forwards",
+            pointerEvents: "none",
+          }}
+        />
+      ))}
+
+      <style>{`
+        @keyframes ripple-expand {
+          to { transform: translate(-50%, -50%) scale(40); opacity: 0; }
+        }
+      `}</style>
+    </motion.a>
   );
 }
