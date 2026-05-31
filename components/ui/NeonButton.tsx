@@ -19,7 +19,7 @@ export default function NeonButton({
   href: string;
   children: React.ReactNode;
   variant?: Variant;
-  download?: boolean;
+  download?: boolean | string;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const [ripples, setRipples] = useState<Ripple[]>([]);

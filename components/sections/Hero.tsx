@@ -232,7 +232,11 @@ export default function Hero() {
           <NeonButton href="#projects" variant="red">
             View Projects
           </NeonButton>
-          <NeonButton href="/resume.pdf" variant="ghost" download>
+          <NeonButton
+            href="/Pranav_Hole_2YOE_FullStackDeveloper_Resume.pdf"
+            variant="ghost"
+            download="Pranav_Hole_2YOE_FullStackDeveloper_Resume.pdf"
+          >
             Download Resume
           </NeonButton>
           <NeonButton href="#contact" variant="ghost">

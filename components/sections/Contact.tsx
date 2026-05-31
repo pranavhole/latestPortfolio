@@ -6,6 +6,7 @@ import ChapterTag from "@/components/ui/ChapterTag";
 
 const contacts = [
   { icon: "@", label: "Email", value: PERSONAL.email, href: `mailto:${PERSONAL.email}` },
+  { icon: "PH", label: "Phone", value: PERSONAL.phone, href: `tel:${PERSONAL.phone.replace(/\s/g, "")}` },
   { icon: "GH", label: "GitHub", value: "github.com/pranavhole · 53 repos", href: PERSONAL.github },
   { icon: "in", label: "LinkedIn", value: "linkedin.com/in/pranav-hole", href: PERSONAL.linkedin },
 ];
@@ -58,7 +59,7 @@ export default function Contact() {
               <motion.a
                 key={c.label}
                 href={c.href}
-                target={c.href.startsWith("mailto") ? undefined : "_blank"}
+                target={c.href.startsWith("mailto") || c.href.startsWith("tel") ? undefined : "_blank"}
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
